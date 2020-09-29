@@ -1,6 +1,6 @@
 class PodcastsController < ApplicationController
   def index
-    @podcasts = Podcast.all('created_at DESC')
+    @podcasts = Podcast.all.order('created_at DESC')
   end
 
   def new
@@ -9,6 +9,7 @@ class PodcastsController < ApplicationController
 
   def create
     @podcast = Podcast.new(podcast_params)
+
     if @podcast.save
       redirect_to root_path
     else
@@ -22,4 +23,3 @@ class PodcastsController < ApplicationController
   end
 
 end
-
