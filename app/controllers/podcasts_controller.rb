@@ -11,11 +11,12 @@ class PodcastsController < ApplicationController
 
   def new
     @podcast = current_user.podcasts.build
-    @categories = Category.all.map { |category| [category.name, categoryid] }
+    @categories = Category.all.map { |category| [category.name, category.id] }
   end
 
   def create
     @podcast = current_user.podcasts.build(podcast_params)
+    @podcast.category = Category.find(params[:category_id])
 
     if @podcast.save
       redirect_to root_path
@@ -23,6 +24,7 @@ class PodcastsController < ApplicationController
       render :new
     end
   end
+
   def edit
   end
 
@@ -42,7 +44,7 @@ class PodcastsController < ApplicationController
   private
 
   def podcast_params
-    params.require(:podcast).permit(:title, :description, :author)
+    params.require(:podcast).permit(:title, :description, :author, :category_id)
   end
 
   def find_podcast
