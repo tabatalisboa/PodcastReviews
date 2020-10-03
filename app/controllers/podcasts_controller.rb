@@ -26,9 +26,12 @@ class PodcastsController < ApplicationController
   end
 
   def edit
+    @categories = Category.all.map { |category| [category.name, category.id] }
   end
 
   def update
+    @podcast.category = Category.find(params[:category_id])
+
     if @podcast.update(podcast_params)
       redirect_to podcast_path(@podcast)
     else

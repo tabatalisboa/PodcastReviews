@@ -1,3 +1,15 @@
 <h1>Edit a podcast </h1>
 
-<%= render 'form' %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <%= simple_form_for @podcast, :html =>  { :multipart => true } do |f| %>
+          <%= f.select :category_id, @categories %>
+          <%= f.input :title, label: "Podcast Name" %>
+          <%= f.input :description %>
+          <%= f.input :author %>
+          <%= f.button :submit %>
+      <% end %>
+    </div>
+  </div>
+</div>

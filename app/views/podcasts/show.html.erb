@@ -1,5 +1,7 @@
 <h2><%= @podcast.title %></h2>
+<h5>Category: <%= @podcast.category.name %></h5>
 <p><%= @podcast.description %></p>
+
 
 <%= link_to "Back", root_path %>
   <% if user_signed_in? %>
