@@ -16,7 +16,7 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <% Category.all.each do |category| %>
-              <%= link_to category.name, podcasts_path(category: category.name), class:"link" %>
+              <%= link_to category.name, podcasts_path(category: category.name), class:"dropdown-item" %>
             <% end %>
          </div>
           <li class="nav-item active">
