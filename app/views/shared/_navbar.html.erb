@@ -7,19 +7,23 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item dropdown">
-        <%= link_to "Categories" , class: "dropdown-toggle", data: { toggle: "dropdown" }, role: "button", 'aria-expanded': false %><span class="caret"></span>
-        <ul class="dropdown-menu role= "menu">
 
-        </ul>
-      </li>
 
       <% if user_signed_in? %>
-        <li class="nav-item active">
-          <%= link_to "Add Podcast", new_podcast_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Messages", "#", class: "nav-link" %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Categories
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <% Category.all.each do |category| %>
+              <%= link_to category.name, podcasts_path(category: category.name), class:"link" %>
+            <% end %>
+         </div>
+          <li class="nav-item active">
+            <%= link_to "Add Podcast", new_podcast_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Messages", "#", class: "nav-link" %>
         </li>
         <li class="nav-item dropdown">
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>

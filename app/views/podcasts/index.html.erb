@@ -1,6 +1,10 @@
 
-<h1>Hello ALL world!</h1>
+<h1 class="current_category"><%= params[:category] %></h1>
 
-<% @podcasts.each do |podcast| %>
-  <h2> <%= link_to podcast.title, podcast_path(podcast)%></h2>
+<% if @podcasts.count == 0 %>
+  <h1>No Podcasts here!</h1>
+<% else %>
+  <% @podcasts.each do |podcast| %>
+    <h2> <%= link_to podcast.title, podcast_path(podcast)%></h2>
+  <% end %>
 <% end %>

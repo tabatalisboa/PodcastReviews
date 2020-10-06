@@ -2,7 +2,12 @@ class PodcastsController < ApplicationController
   before_action :find_podcast, only: [:show, :edit, :update, :destroy]
 
   def index
-    @podcasts = Podcast.all.order('created_at DESC')
+    if params[:category].blank?
+      @podcasts = Podcast.all.order('created_at DESC')
+    else
+      @category_id = Category.find_by(name: params[:category]).id
+      @podcasts = Podcast.where(:category_id => @category_id).order('created_at DESC')
+    end
   end
 
   def show
