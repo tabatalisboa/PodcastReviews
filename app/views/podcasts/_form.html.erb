@@ -5,6 +5,7 @@
           <%= select_tag(:category_id, options_for_select(@categories), :prompt => "Select a category" ) %>
           <%= f.input :title, label: "Podcast Name" %>
           <%= f.input :description %>
+          <%= f.input :photo, as: :file %>
           <%= f.input :author %>
           <%= f.button :submit %>
       <% end %>

@@ -1,6 +1,9 @@
 <h2><%= @podcast.title %></h2>
 <h5>Category: <%= @podcast.category.name %></h5>
 <p><%= @podcast.description %></p>
+<p>
+  <%= cl_image_tag @podcast.photo.key %>
+</p>
 
 
 <%= link_to "Back", root_path %>
