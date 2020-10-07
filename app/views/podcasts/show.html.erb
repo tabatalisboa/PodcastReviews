@@ -1,9 +1,20 @@
 <h2><%= @podcast.title %></h2>
 <h5>Category: <%= @podcast.category.name %></h5>
 <p><%= @podcast.description %></p>
-<p>
-  <%= cl_image_tag @podcast.photo.key %>
-</p>
+<% if @podcast.photo.attached? %>
+  <p><%= cl_image_tag @podcast.photo.key %></p>
+<% else %>
+  <h1>No PHOTO here!</h1>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <%= simple_form_for @podcast, :html =>  { :multipart => true } do |f| %>
+          <%= f.input :photo, as: :file %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% end %>
 
 
 <%= link_to "Back", root_path %>
