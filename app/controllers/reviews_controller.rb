@@ -7,11 +7,12 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.podcast = Podcast.find(params[:podcast_id])
-    @review.user_id = current_user.id
+    @review.user = current_user
 
     if @review.save
       redirect_to podcast_path(@podcast)
     else
+      flash[:alert] = "Something went wrong."
       render :new
     end
   end
@@ -24,6 +25,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
 
     if @review.update(review_params)
+    end
   end
 
   private
