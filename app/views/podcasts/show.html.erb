@@ -3,10 +3,10 @@
     <% if @podcast.photo.attached? %>
         <%= cl_image_tag @podcast.photo.key, class: "podcast-show" %>
     <% else %>
-        <h1>NO PHOTO HERE!</h1>
-          <%= simple_form_for @podcast, :html =>  { :multipart => true } do |f| %>
-            <%= f.input :photo, as: :file %>
-          <% end %>
+        <%= simple_form_for @podcast, :html =>  { :multipart => true } do |f| %>
+          <%= f.input :photo, as: :file %>
+          <%= f.submit :button %>
+        <% end %>
     <% end %>
   </div>
   <div class="col-md-8">

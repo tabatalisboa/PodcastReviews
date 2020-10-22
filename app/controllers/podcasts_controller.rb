@@ -11,7 +11,7 @@ class PodcastsController < ApplicationController
   end
 
   def show
-    # @podcast = Podcast.find(params[:id])
+     @podcast = Podcast.find(params[:id])
   end
 
   def new
@@ -35,7 +35,7 @@ class PodcastsController < ApplicationController
   end
 
   def update
-    @podcast.category = Category.find(params[:category_id])
+   # @podcast.category = Category.find(params[:category_id])
 
     if @podcast.update(podcast_params)
       redirect_to podcast_path(@podcast)

@@ -1,19 +1,20 @@
 
 <h1 class="current_category"><%= params[:category] %></h1>
-<div class="row">
+
   <% if @podcasts.count == 0 %>
     <h1>No Podcasts here!</h1>
   <% else %>
+  <div class="row">
     <% @podcasts.each do |podcast| %>
       <div class="col-md-3">
         <% if podcast.photo.attached? %>
           <%= link_to podcast_path(podcast) do %>
-            <p><%= cl_image_tag podcast.photo.key %></p>
+            <%= cl_image_tag podcast.photo.key, class: 'podcast' %>
           <% end %>
         <% else %>
           <h2> <%= link_to podcast.title, podcast_path(podcast)%></h2>
         <% end %>
       </div>
     <% end %>
+  </div>
   <% end %>
-</div>
